@@ -1,3 +1,4 @@
+import { Container } from '@material-ui/core';
 import React from 'react';
 import { AddTodoForm } from './components/AddTodoForm';
 import { TodoItem } from './components/TodoItem';
@@ -8,7 +9,7 @@ const App: React.FC = () => {
 
   console.log(todos);
   return (
-    <>
+    <Container maxWidth="sm">
       <h1>Todo Meow</h1>
       <AddTodoForm todosLength={todos.length} />
       <br />
@@ -17,7 +18,7 @@ const App: React.FC = () => {
       {todos.map((todo) => {
         return <TodoItem key={todo.id} todo={todo} />;
       })}
-    </>
+    </Container>
   );
 };
 
