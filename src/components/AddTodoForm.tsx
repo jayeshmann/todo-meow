@@ -13,7 +13,7 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ todosLength }) => {
 
   const handleTodoSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(addTodo({ title: todo.value, id: todosLength }));
+    dispatch(addTodo({ id: todosLength, title: todo.value }));
     todo.onReset();
   };
   return (
