@@ -46,7 +46,6 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
           edge="start"
           checked={todo.completed}
           tabIndex={todo.id}
-          disableRipple
           inputProps={{ 'aria-labelledby': `checkbox-list-label-${todo.id}` }}
           onClick={() => {
             handleCheck(todo.id);
