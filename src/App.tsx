@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import AllInclusiveTwoToneIcon from '@material-ui/icons/AllInclusiveTwoTone';
 import CheckCircleOutlineTwoToneIcon from '@material-ui/icons/CheckCircleOutlineTwoTone';
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
+import { Todo } from './types';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,6 +36,17 @@ const App: React.FC = () => {
   const classes = useStyles();
   const todosLength = todos.length;
 
+  const filteredTodos = todos.filter((todo: Todo) => {
+    switch (tab) {
+      case 0:
+        return todo.completed === false;
+      case 2:
+        return todo.completed === true;
+      default:
+        return todo;
+    }
+  });
+
   return (
     <React.Fragment>
       <CssBaseline>
@@ -52,7 +64,7 @@ const App: React.FC = () => {
               <AddTodoForm todosLength={todosLength} />
 
               {todosLength ? (
-                todos.map((todo) => {
+                filteredTodos.map((todo) => {
                   return (
                     <List key={todo.id} className={classes.root}>
                       <TodoItem key={todo.id} todo={todo} />
