@@ -1,7 +1,7 @@
 import Container from '@material-ui/core/Container';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import Paper from '@material-ui/core/Paper';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AddTodoForm } from './components/AddTodoForm';
 import { TodoItem } from './components/TodoItem';
 import { useStateValue } from './state';
@@ -30,11 +30,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+const sayings = ['Nothing to see here!', 'Get on your work!', 'All done!'];
+
 const App: React.FC = () => {
   const [{ todos }] = useStateValue();
   const [tab, setTab] = React.useState(1);
+  const [saying, setSaying] = React.useState(sayings[0]);
   const classes = useStyles();
-  const todosLength = todos.length;
 
   const filteredTodos = todos.filter((todo: Todo) => {
     switch (tab) {
@@ -46,6 +48,21 @@ const App: React.FC = () => {
         return todo;
     }
   });
+  const todosLength = filteredTodos.length;
+
+  useEffect(() => {
+    switch (tab) {
+      case 0:
+        setSaying(sayings[2]);
+        break;
+      case 2:
+        setSaying(sayings[1]);
+        break;
+      default:
+        setSaying(sayings[0]);
+        break;
+    }
+  }, [tab]);
 
   return (
     <React.Fragment>
@@ -81,7 +98,7 @@ const App: React.FC = () => {
                   justify="center"
                   style={{ height: '50vh' }}
                 >
-                  <Typography variant="h4">Nothing to see here!</Typography>
+                  <Typography variant="h4">{saying}</Typography>
                 </Grid>
               )}
 
