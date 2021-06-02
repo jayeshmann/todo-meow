@@ -40,7 +40,16 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   };
 
   return (
-    <ListItem key={todo.id} role={undefined} dense button divider>
+    <ListItem
+      key={todo.id}
+      role={undefined}
+      dense
+      button
+      divider
+      onDoubleClick={() => {
+        if (todo.completed === false) setEditMode(!editMode);
+      }}
+    >
       <ListItemIcon>
         <Checkbox
           edge="start"

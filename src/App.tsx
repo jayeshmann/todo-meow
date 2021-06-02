@@ -57,11 +57,14 @@ const App: React.FC = () => {
               direction="column"
               justify="space-between"
               alignItems="center"
+              spacing={3}
             >
               <Grid item>
                 <Typography variant="h2">Todo Meow</Typography>
               </Grid>
-              <AddTodoForm todosLength={todosLength} />
+              <Grid item>
+                <AddTodoForm todosLength={todosLength} />
+              </Grid>
 
               {todosLength ? (
                 filteredTodos.map((todo) => {
