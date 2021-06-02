@@ -1,3 +1,4 @@
+import TextField from '@material-ui/core/TextField';
 import React from 'react';
 import { useField } from '../hooks';
 import { addTodo, useStateValue } from '../state';
@@ -7,7 +8,7 @@ interface AddTodoFormProps {
 }
 
 export const AddTodoForm: React.FC<AddTodoFormProps> = ({ todosLength }) => {
-  const todo = useField('text', 'What do you wanna do?');
+  const todo = useField('text');
 
   const [, dispatch] = useStateValue();
 
@@ -17,8 +18,13 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ todosLength }) => {
     todo.onReset();
   };
   return (
-    <form onSubmit={handleTodoSubmit}>
-      <input {...todo} />
+    <form onSubmit={handleTodoSubmit} noValidate autoComplete="off">
+      <TextField
+        id="outlined-basic"
+        label="What do you wanna do?"
+        variant="outlined"
+        {...todo}
+      />
       <button type="submit" hidden></button>
     </form>
   );
