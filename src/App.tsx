@@ -82,10 +82,11 @@ const App: React.FC = () => {
               </Grid>
 
               {todosLength ? (
-                filteredTodos.map((todo) => {
+                filteredTodos.map((todo, i) => {
+                  const last = i === todosLength - 1;
                   return (
                     <List key={todo.id} className={classes.root}>
-                      <TodoItem key={todo.id} todo={todo} />
+                      <TodoItem key={todo.id} todo={todo} last={last} />
                     </List>
                   );
                 })

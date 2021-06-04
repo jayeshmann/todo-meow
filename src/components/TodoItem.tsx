@@ -15,8 +15,9 @@ import TextField from '@material-ui/core/TextField';
 
 interface TodoItemProps {
   todo: Todo;
+  last: boolean;
 }
-export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
+export const TodoItem: React.FC<TodoItemProps> = ({ todo, last }) => {
   const [, dispatch] = useStateValue();
 
   const [editMode, setEditMode] = useState(false);
@@ -49,6 +50,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
       onDoubleClick={() => {
         if (todo.completed === false) setEditMode(!editMode);
       }}
+      style={last ? { marginBottom: '50px' } : undefined}
     >
       <ListItemIcon>
         <Checkbox
