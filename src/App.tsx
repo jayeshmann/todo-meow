@@ -7,7 +7,6 @@ import { TodoItem } from './components/TodoItem';
 import { useStateValue } from './state';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -16,20 +15,21 @@ import AllInclusiveTwoToneIcon from '@material-ui/icons/AllInclusiveTwoTone';
 import CheckCircleOutlineTwoToneIcon from '@material-ui/icons/CheckCircleOutlineTwoTone';
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
 import { Todo } from './types';
+import { createStyles, makeStyles } from '@material-ui/styles';
+import { createTheme, Theme, ThemeProvider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       width: '100%',
       maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
     },
     bottom: {
       width: '100vw',
     },
   })
 );
-
+const theme = createTheme();
 const sayings = ['Nothing to see here!', 'Get on your work!', 'All done!'];
 
 const App: React.FC = () => {
@@ -65,16 +65,15 @@ const App: React.FC = () => {
   }, [tab]);
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <CssBaseline>
         <Paper variant="outlined">
-          <Container maxWidth="sm" style={{ height: '100vh' }}>
+          <Container maxWidth="sm" sx={{ minHeight: '93vh' }}>
             <Grid
               container
               direction="column"
-              justify="space-between"
+              justifyContent="space-between"
               alignItems="center"
-              spacing={3}
             >
               <Grid item>
                 <Typography variant="h2">Todo Meow</Typography>
@@ -95,17 +94,20 @@ const App: React.FC = () => {
                 <Grid
                   container
                   alignItems="center"
-                  justify="center"
-                  style={{ height: '50vh' }}
+                  justifyContent="center"
+                  sx={{ height: '50vh' }}
                 >
                   <Typography variant="h4">{saying}</Typography>
                 </Grid>
               )}
 
-              <Box position="fixed" bottom={0}>
+              <Box position="fixed" bottom={0} sx={{ width: '100vw' }}>
                 <BottomNavigation
                   value={tab}
-                  onChange={(_event, newValue) => {
+                  onChange={(
+                    _event: React.SyntheticEvent,
+                    newValue: React.SetStateAction<number>
+                  ) => {
                     setTab(newValue);
                   }}
                   showLabels
@@ -129,7 +131,7 @@ const App: React.FC = () => {
           </Container>
         </Paper>
       </CssBaseline>
-    </React.Fragment>
+    </ThemeProvider>
   );
 };
 
