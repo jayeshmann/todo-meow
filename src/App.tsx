@@ -8,7 +8,6 @@ import { useStateValue } from './state';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import List from '@material-ui/core/List';
-import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import AllInclusiveTwoToneIcon from '@material-ui/icons/AllInclusiveTwoTone';
@@ -18,7 +17,7 @@ import { Todo } from './types';
 import { createStyles, makeStyles } from '@material-ui/styles';
 import { createTheme, Theme, ThemeProvider } from '@material-ui/core';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
     root: {
       width: '100%',
@@ -101,7 +100,15 @@ const App: React.FC = () => {
                 </Grid>
               )}
 
-              <Box position="fixed" bottom={0} sx={{ width: '100vw' }}>
+              <Paper
+                sx={{
+                  position: 'fixed',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                }}
+                elevation={3}
+              >
                 <BottomNavigation
                   value={tab}
                   onChange={(
@@ -126,7 +133,7 @@ const App: React.FC = () => {
                     icon={<CheckCircleOutlineTwoToneIcon />}
                   />
                 </BottomNavigation>
-              </Box>
+              </Paper>
             </Grid>
           </Container>
         </Paper>
