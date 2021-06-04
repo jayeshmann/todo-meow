@@ -25,7 +25,9 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ todosLength }) => {
         variant="outlined"
         {...todo}
       />
-      <button type="submit" hidden></button>
+      <button type="submit" hidden>
+        Add
+      </button>
     </form>
   );
 };

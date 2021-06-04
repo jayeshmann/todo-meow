@@ -42,7 +42,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   return (
     <ListItem
       key={todo.id}
-      role={undefined}
+      role={'listitem'}
       dense
       button
       divider
