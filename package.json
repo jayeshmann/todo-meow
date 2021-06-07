@@ -1,6 +1,15 @@
 {
   "name": "todo-meow",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jayesh Mann",
+    "email": "jayeshmann06@gmail.com"
+  },
+  "repository": {
+    "url": "https://github.com/jayeshmann/todo-meow"
+  },
+  "homepage": "https://github.com/jayeshmann/todo-meow#todo-meow",
+  "license": "AGPL-3.0-or-later",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.0",
