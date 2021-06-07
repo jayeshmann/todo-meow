@@ -7,7 +7,9 @@ export type State = {
 };
 
 const initialState: State = {
-  todos: [],
+  todos: localStorage.getItem('todos')
+    ? JSON.parse(localStorage.getItem('todos') as string)
+    : [],
 };
 
 export const StateContext = createContext<[State, React.Dispatch<Action>]>([

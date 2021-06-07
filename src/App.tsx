@@ -50,6 +50,7 @@ const App: React.FC = () => {
   const todosLength = filteredTodos.length;
 
   useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
     switch (tab) {
       case 0:
         setSaying(sayings[2]);
@@ -61,7 +62,7 @@ const App: React.FC = () => {
         setSaying(sayings[0]);
         break;
     }
-  }, [tab]);
+  }, [tab, todos]);
 
   return (
     <ThemeProvider theme={theme}>
