@@ -14,8 +14,10 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ todosLength }) => {
 
   const handleTodoSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(addTodo({ id: todosLength, title: todo.value }));
-    todo.onReset();
+    if (todo.value.trim() !== '') {
+      dispatch(addTodo({ id: todosLength, title: todo.value }));
+      todo.onReset();
+    }
   };
   return (
     <form onSubmit={handleTodoSubmit} noValidate autoComplete="off">

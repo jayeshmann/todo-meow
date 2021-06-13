@@ -33,11 +33,17 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, last }) => {
   };
   const handleEdit = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(
-      editTodo({ id: todo.id, title: newTodo.value, completed: todo.completed })
-    );
-    newTodo.onReset();
-    setEditMode(false);
+    if (newTodo.value.trim() !== '') {
+      dispatch(
+        editTodo({
+          id: todo.id,
+          title: newTodo.value,
+          completed: todo.completed,
+        })
+      );
+      newTodo.onReset();
+      setEditMode(false);
+    }
   };
 
   return (
