@@ -14,7 +14,7 @@ The application has the following features:
 
 use
 
-`Node` version `16.x.x` `lts/gallium`
+`Node` version `20.x.x` `lts/iron`
 
 `Yarn` package manager version `1.x.x`
 
